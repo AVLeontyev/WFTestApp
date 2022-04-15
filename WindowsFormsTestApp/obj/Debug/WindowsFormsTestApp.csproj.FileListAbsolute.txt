@@ -1,0 +1,9 @@
+C:\Users\Ngasta\source\repos\WindowsFormsTestApp\WindowsFormsTestApp\bin\Debug\WindowsFormsTestApp.exe.config
+C:\Users\Ngasta\source\repos\WindowsFormsTestApp\WindowsFormsTestApp\bin\Debug\WindowsFormsTestApp.exe
+C:\Users\Ngasta\source\repos\WindowsFormsTestApp\WindowsFormsTestApp\bin\Debug\WindowsFormsTestApp.pdb
+C:\Users\Ngasta\source\repos\WindowsFormsTestApp\WindowsFormsTestApp\obj\Debug\WindowsFormsTestApp.csprojAssemblyReference.cache
+C:\Users\Ngasta\source\repos\WindowsFormsTestApp\WindowsFormsTestApp\obj\Debug\WindowsFormsTestApp.Properties.Resources.resources
+C:\Users\Ngasta\source\repos\WindowsFormsTestApp\WindowsFormsTestApp\obj\Debug\WindowsFormsTestApp.csproj.GenerateResource.cache
+C:\Users\Ngasta\source\repos\WindowsFormsTestApp\WindowsFormsTestApp\obj\Debug\WindowsFormsTestApp.csproj.CoreCompileInputs.cache
+C:\Users\Ngasta\source\repos\WindowsFormsTestApp\WindowsFormsTestApp\obj\Debug\WindowsFormsTestApp.exe
+C:\Users\Ngasta\source\repos\WindowsFormsTestApp\WindowsFormsTestApp\obj\Debug\WindowsFormsTestApp.pdb
