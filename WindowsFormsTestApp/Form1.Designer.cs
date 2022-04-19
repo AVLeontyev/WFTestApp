@@ -46,6 +46,7 @@ namespace WindowsFormsTestApp
             this.m_btnLoad = new System.Windows.Forms.Button();
             this.m_btnAdd = new System.Windows.Forms.Button();
             this.m_btnDelete = new System.Windows.Forms.Button();
+            this.m_btnSave = new System.Windows.Forms.Button();
 
             {
                 this.MainMenuStrip = new MenuStrip();
@@ -116,7 +117,7 @@ namespace WindowsFormsTestApp
             this.m_btnLoad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.m_btnLoad.Location = new System.Drawing.Point(0, 210);
             this.m_btnLoad.Name = "m_btnLoad";
-            this.m_btnLoad.Size = new System.Drawing.Size(89, 33);
+            this.m_btnLoad.Size = new System.Drawing.Size(75, 33);
             this.m_btnLoad.TabIndex = 10;
             this.m_btnLoad.Text = "Добавить";
             this.m_btnLoad.UseVisualStyleBackColor = true;
@@ -129,7 +130,7 @@ namespace WindowsFormsTestApp
             this.m_btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.m_btnAdd.Location = new System.Drawing.Point(100, 210);
             this.m_btnAdd.Name = "m_btnAdd";
-            this.m_btnAdd.Size = new System.Drawing.Size(89, 33);
+            this.m_btnAdd.Size = new System.Drawing.Size(75, 33);
             this.m_btnAdd.TabIndex = 10;
             this.m_btnAdd.Text = "Изменить";
             this.m_btnAdd.UseVisualStyleBackColor = true;
@@ -141,12 +142,25 @@ namespace WindowsFormsTestApp
             this.m_btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.m_btnDelete.Location = new System.Drawing.Point(200, 210);
             this.m_btnDelete.Name = "m_btnDelete";
-            this.m_btnDelete.Size = new System.Drawing.Size(89, 33);
+            this.m_btnDelete.Size = new System.Drawing.Size(75, 33);
             this.m_btnDelete.TabIndex = 10;
             this.m_btnDelete.Text = "Удалить";
             this.m_btnDelete.UseVisualStyleBackColor = true;
             this.m_btnDelete.Click += new System.EventHandler(this.m_btnDelete_Click);
             this.m_btnDelete.Visible = true;
+
+            // 
+            // m_btnSave
+            // 
+            this.m_btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.m_btnSave.Location = new System.Drawing.Point(100, 210);
+            this.m_btnSave.Name = "m_btnSave";
+            this.m_btnSave.Size = new System.Drawing.Size(75, 33);
+            this.m_btnSave.TabIndex = 10;
+            this.m_btnSave.Text = "Сохранить";
+            this.m_btnSave.UseVisualStyleBackColor = true;
+            this.m_btnSave.Click += new System.EventHandler(this.m_btnSave_Click);
+            this.m_btnSave.Visible = false;
 
             // 
             // m_dgvValues
@@ -156,7 +170,7 @@ namespace WindowsFormsTestApp
             this.m_dgvValues.AllowUserToOrderColumns = true;
             this.m_dgvValues.AllowUserToResizeColumns = true;
             this.m_dgvValues.AllowUserToResizeRows = false;
-            this.m_dgvValues.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.m_dgvValues.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top)
             | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.m_dgvValues.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
@@ -168,10 +182,10 @@ namespace WindowsFormsTestApp
             this.m_dgvValues.RowTemplate.ReadOnly = true;
             this.m_dgvValues.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.m_dgvValues.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.m_dgvValues.Size = new System.Drawing.Size(300, 40);
+            this.m_dgvValues.Size = new System.Drawing.Size(250, 200);
             this.m_dgvValues.TabIndex = 4;
             this.m_dgvValues.DefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Regular);
-            this.m_dgvValues.RowTemplate.Height = 30;
+            //this.m_dgvValues.RowTemplate.Height = 30;
             this.m_dgvValues.RowHeadersVisible = false;
             // 
             // m_insValues
@@ -181,7 +195,7 @@ namespace WindowsFormsTestApp
             this.m_insValues.AllowUserToOrderColumns = true;
             this.m_insValues.AllowUserToResizeColumns = false;
             this.m_insValues.AllowUserToResizeRows = false;
-            this.m_insValues.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.m_insValues.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.m_insValues.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
@@ -191,7 +205,7 @@ namespace WindowsFormsTestApp
             this.m_insValues.Name = "m_insValues";
             this.m_insValues.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.m_insValues.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.m_insValues.Size = new System.Drawing.Size(300, 50);
+            this.m_insValues.Size = new System.Drawing.Size(250, 50);
             this.m_insValues.TabIndex = 4;
             this.m_insValues.Visible = true;
 
@@ -208,6 +222,7 @@ namespace WindowsFormsTestApp
                 this.Controls.Add(this.m_btnLoad);
                 this.Controls.Add(this.m_btnDelete);
                 this.Controls.Add(this.m_btnAdd);
+                this.Controls.Add(this.m_btnSave);
             }
 
             this.components = new System.ComponentModel.Container();
@@ -231,6 +246,7 @@ namespace WindowsFormsTestApp
         private System.Windows.Forms.Button m_btnLoad;
         private System.Windows.Forms.Button m_btnAdd;
         private System.Windows.Forms.Button m_btnDelete;
+        private System.Windows.Forms.Button m_btnSave;
 
         private DataGridView m_dgvValues;
         private DataGridView m_insValues;

@@ -38,30 +38,27 @@ namespace WindowsFormsTestApp
         {
             string strRes = string.Empty;
 
-            strRes = @"DELETE FROM [transport].[dbo].[PTS] WHERE [UNTS] = " + id.ToString();
+            strRes = @"DELETE FROM [transport].[dbo].[PTS] WHERE [UIN] = " + id.ToString();
 
             return strRes;
         }
 
-        public static string updateQueryTS(int id, int tableID, string A, string B, string C)
+        public static string updateQueryTS(int id, string A, string B, string C)
         {
             string strRes = string.Empty;
 
             strRes = "UPDATE ";
-            strRes += "  [transport].[dbo].[PTS] SET [name] = \'" + A + "\' , [description] = \'" + B + "\' WHERE [UNTS] = " + id.ToString();// + DB_NAME_TABLE;
+            strRes += "  [transport].[dbo].[PTS] SET [UNTS] = \'" + A + "\' , [TID] = \'" + B + "\' WHERE [UIN] = " + id.ToString();// + DB_NAME_TABLE;
 
             return strRes;
         }
 
-        public static string setQueryTS(List<object> list, int tableID)
+        public static string setQueryTS(List<object> list)
         {
             string strRes = string.Empty;
-            strRes = @"INSERT INTO [transport].[dbo].[PTS] ([stat_id],[object_id],[fire_number],[date_in],[location],[type_id],[mark_id],[factory],[factory_num],[date_crt],[mark_otv]) VALUES (";
+            strRes = @"INSERT INTO [transport].[dbo].[PTS] ([UNTS],[TID],[FIRMID],[GRP],[NORMT],[DATASP]) VALUES (";
 
-            int i = 0;
-            if (tableID == 0 || tableID > 2)
-                i++;
-            for (; i < list.Count; i++)
+            for (int i = 1; i < list.Count; i++)
             {
                 strRes = strRes + "@val" + i + ",";
             }
@@ -71,7 +68,19 @@ namespace WindowsFormsTestApp
             return strRes;
         }
 
+        public static string getQueryTS()
+        {
+            string strRes = string.Empty;
 
+            strRes = "SELECT *";
+            strRes += " FROM  [transport].[dbo].[PTS]";
+            return strRes;
+
+        }
+
+        /// <summary>
+        /// Удаление данных из таблицы
+        /// </summary>
         public void DeleteDataFromTable(int id)
         {
             string query = deleteQueryTS(id);
@@ -80,30 +89,64 @@ namespace WindowsFormsTestApp
             cmd.ExecuteNonQuery();
         }
 
-        public void UpdateDataFromTable(int id, int tableID, string A, string B, string C)
+        /// <summary>
+        /// Изменение данных
+        /// </summary>
+        public void UpdateDataFromTable(int id, string A, string B, string C)
         {
-            string query = updateQueryTS(id, tableID, A, B, C);
+            string query = updateQueryTS(id, A, B, C);
             cmd.CommandText = query;
 
             cmd.ExecuteNonQuery();
         }
 
-        public void SetDataToTable(List<object> list, int tableID)
+        /// <summary>
+        /// Добавление данных
+        /// </summary>
+        public void SetDataToTable(List<object> list)
         {
-            string query = setQueryTS(list, tableID);
+            string query = setQueryTS(list);
             cmd.CommandText = query;
 
             cmd.Parameters.Clear();
-            int i = 0;
-            if (tableID == 0 || tableID > 2)
-                i++;
-            for (; i < list.Count; i++)
+            
+            for (int i = 1; i < list.Count; i++)
             {
                 SqlParameter sqlParameter = new SqlParameter("@val" + i, list[i]);
                 cmd.Parameters.Add(sqlParameter);
             }
 
             int rowCount = cmd.ExecuteNonQuery();
+        }
+
+        /// <summary>
+        /// Получение данных из таблицы
+        /// </summary>
+        public List<List<object>> GetDataFromTable()
+        {
+            List<List<object>> tableRes = new List<List<object>>();
+
+            string query = getQueryTS();
+            cmd.CommandText = query;
+            //cmd.EndExecuteReader();
+
+            using (DbDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        List<object> row = new List<object>();
+                        for (int i = 0; i < reader.FieldCount; i++)
+                        {
+                            row.Add((object)reader.GetValue(i));
+                        }
+                        tableRes.Add(row);
+                    }
+                }
+                reader.Close();
+            }
+            return tableRes;
         }
     }
 
